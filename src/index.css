@@ -1,0 +1,158 @@
+body{
+    background-color: #131a27 !important;
+}
+
+/* Home */
+@media(max-width:1000px){
+  .carousels-img{
+    height:450px;
+  }
+}
+@media(max-width:850px){
+  .carousels-img {
+      height:400px
+  }
+}
+@media(max-width:750px){
+  .carousels-img {
+      height:300px
+  }
+}
+@media(max-width:550px){
+  .carousels-img {
+      height:200px
+  } 
+}
+
+/* subscribe */
+.subscribe{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    gap:15px;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Movies and Shows  */
+.findTheCategory{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    gap:15px;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width:800px) {
+    .findTheCategory{
+        display: grid;
+        grid-template-columns: 1fr 1fr ; 
+        gap:25px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media(max-width:450px) {
+    .findTheCategory{
+        display: grid;
+        grid-template-columns: 1fr ; 
+        gap:10px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/*imge hover Effect  */
+.hover-effect {
+    position: relative;
+  }
+  
+  .image {
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    font-size:16px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  
+  .hover-effect:hover .image {
+    opacity: 0.3;
+  }
+  
+  .hover-effect:hover .middle {
+    opacity: 1;
+  }
+  
+  /* Loader */
+  .loader {
+    border: 5px solid;
+    border-radius: 50%;
+    border-top: 5px solid white !important;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 0.8s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* player details */
+  .trailer-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr ; 
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right,#030b17, #131a27);
+  }
+
+  
+  @media(max-width:1000px){
+    .trailer-details{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap:5px;
+      justify-content: center;
+      align-items: center;
+    }
+  }  
+  @media(max-width:430px){
+    .trailer-img{
+      width:250px;
+    }
+  }
+/* player */
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25% !important;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;  
+}
+
+.login-form-color{
+  background-color: transparent !important;
+  color: #fff !important; 
+}
+
