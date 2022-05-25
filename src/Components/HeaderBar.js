@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  Container,
-  Navbar,
-  Nav,
-  Form,
-  FormControl
-} from "react-bootstrap";
+import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { HotstarContext } from "../App";
@@ -19,7 +13,9 @@ function HeaderBar() {
 
   let [allMovieskey, setAllMoviesKey] = useState();
   let moviesData = async () => {
-    let movies = await axios.get("https://disneyhotstar0.herokuapp.com/users/get-all-movies");
+    let movies = await axios.get(
+      "https://disneyhotstar0.herokuapp.com/users/get-all-movies"
+    );
     setAllMoviesKey(movies?.data?.result[0]?.key);
   };
 
@@ -42,13 +38,15 @@ function HeaderBar() {
   };
 
   let searchData = async (e) => {
-    navigate("/search");
     context.setSearchName(e.target.value);
+    navigate("/search");
     let search = await axios.post(
       "https://disneyhotstar0.herokuapp.com/users/post-search-name/",
       { name: context.searchName }
     );
-    context.setallMoviesOrTvShows(search.data.result);
+    if (search.data.statusCode === 200) {
+      context.setallMoviesOrTvShows(search.data.result);
+    }
   };
 
   return (
@@ -60,7 +58,7 @@ function HeaderBar() {
         style={{ backgroundColor: "#131a27" }}
       >
         <Container fluid>
-          <Navbar.Brand href="/">
+          <Navbar.Brand onClick={() => navigate("/")}>
             <img
               src="https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg"
               alt="Disnep +hotstar"
@@ -68,12 +66,8 @@ function HeaderBar() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
-              <Nav.Link href="/">Home</Nav.Link>
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+              <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
               <Nav.Link href={"/movies-tvshows/" + allMovieskey}>
                 Movies
               </Nav.Link>
