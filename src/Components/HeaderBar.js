@@ -71,7 +71,7 @@ function HeaderBar() {
                 <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Link href={"/movies-tvshows/" + allMovieskey}>
+                <Link to={"/movies-tvshows/" + allMovieskey}>
                   Movies
                 </Link>
               </Nav.Item>
