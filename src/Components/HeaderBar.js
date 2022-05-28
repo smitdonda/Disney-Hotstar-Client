@@ -67,7 +67,9 @@ function HeaderBar() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
+              <Nav.Item>
+                <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
+              </Nav.Item>
               <Nav.Link href={"/movies-tvshows/" + allMovieskey}>
                 Movies
               </Nav.Link>
