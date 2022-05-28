@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Container, Navbar, Nav, Form, FormControl} from "react-bootstrap";
-import { useNavigate,Link } from "react-router-dom";
+import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { HotstarContext } from "../App";
 import LoginIcon from "@mui/icons-material/Login";
@@ -68,12 +68,14 @@ function HeaderBar() {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Item>
-                <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
+                <Nav.Link>
+                  <Link to="/">Home</Link>
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Link to={"/movies-tvshows/" + allMovieskey}>
-                  Movies
-                </Link>
+                <Nav.Link>
+                  <Link to={"/movies-tvshows/" + allMovieskey}>Movies</Link>
+                </Nav.Link>
               </Nav.Item>
               <Nav.Link href={"/movies-tvshows/" + allTvShowsKey}>Tv</Nav.Link>
               <Nav.Link
