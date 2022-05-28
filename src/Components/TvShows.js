@@ -1,35 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import AddIcon from "@mui/icons-material/Add";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import HeaderBar from "../Components/HeaderBar";
 
-function MoviesTvShows() {
-  let { id } = useParams();
-  let [isLoading, setIsLoading] = useState(true);
-
-  // find the seleted category all data
-  let [findTheCategory, setFindTheCategory] = useState();
-
-  let [categoryName, setCategoryName] = useState();
-  let latestData = async () => {
-    let data = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-find-the-category/" + id
+function TvShows() {
+  let [allTvShows, setAllTvShows] = useState();
+  let [allTvShowsKey, setTvShowsKey] = useState();
+  let tvShowsData = async () => {
+    let tvShows = await axios.get(
+      "https://disneyhotstar0.herokuapp.com/users/get-all-tv-shows"
     );
-    setFindTheCategory(data.data.result);
-    if (id === "latestandtrending") {
-      setCategoryName(data?.data?.result[1]?.categoryOfShow);
-    } else if (id === "movies" || id === "tvshowes") {
-      setCategoryName(data?.data?.result[0]?.moviesOrTv);
-    } else {
-      setCategoryName(data?.data?.result[0]?.categoryOfShow);
+    if (tvShows.data.result) {
+        setIsLoading(false)
+      setAllTvShows(tvShows?.data?.result);
+      setTvShowsKey(tvShows?.data?.result[0]?.moviesOrTv);
     }
-    setIsLoading(false);
   };
   useEffect(() => {
-    latestData();
+    tvShowsData();
   }, []);
 
   let addWatchListData = async (e) => {
@@ -38,6 +28,7 @@ function MoviesTvShows() {
       e
     );
   };
+  let [isLoading, setIsLoading] = useState(true);
   return (
     <>
       <HeaderBar></HeaderBar>
@@ -57,11 +48,11 @@ function MoviesTvShows() {
             style={{ marginTop: "50px" }}
           >
             <div>
-              <h3>{categoryName}</h3>
+              <h3>{allTvShowsKey}</h3>
             </div>
             <hr />
             <div className="findTheCategory">
-              {findTheCategory?.map((e, i) => {
+              {allTvShows?.map((e, i) => {
                 return (
                   <div className="mt-4 hover-effect" key={i}>
                     <Link to={`/video-details/` + e.keyName}>
@@ -99,4 +90,4 @@ function MoviesTvShows() {
   );
 }
 
-export default MoviesTvShows;
+export default TvShows;

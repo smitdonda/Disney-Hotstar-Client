@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { HotstarContext } from "../App";
 import LoginIcon from "@mui/icons-material/Login";
@@ -16,7 +16,9 @@ function HeaderBar() {
     let movies = await axios.get(
       "https://disneyhotstar0.herokuapp.com/users/get-all-movies"
     );
-    setAllMoviesKey(movies?.data?.result[0]?.key);
+    if (movies?.data?.result) {
+      setAllMoviesKey(movies?.data?.result[0]?.key);
+    }
   };
 
   let [allTvShowsKey, setTvShowsKey] = useState();
@@ -24,7 +26,9 @@ function HeaderBar() {
     let tvShows = await axios.get(
       "https://disneyhotstar0.herokuapp.com/users/get-all-tv-shows"
     );
-    setTvShowsKey(tvShows?.data?.result[0]?.key);
+    if (tvShows.data.result) {
+      setTvShowsKey(tvShows?.data?.result[0]?.key);
+    }
   };
   useEffect(() => {
     moviesData();
@@ -64,24 +68,29 @@ function HeaderBar() {
               alt="Disnep +hotstar"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle aria-controls="navbarScroll" style={{fontSize: "18px"}} />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Item>
-                <Nav.Link>
-                  <Link to="/">Home</Link>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>
-                  <Link to={"/movies-tvshows/" + allMovieskey}>Movies</Link>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Link href={"/movies-tvshows/" + allTvShowsKey}>Tv</Nav.Link>
+            <Nav className="me-auto my-2 my-lg-0 " navbarScroll>
+              <Nav.Link onClick={() => navigate("/")} className="text-white">
+                Home
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => navigate("/all-movies/" + allMovieskey)}
+                className="text-white"
+              >
+                Movies
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => navigate("/all-tvshows/" + allTvShowsKey)}
+                className="text-white"
+              >
+                Tv
+              </Nav.Link>
               <Nav.Link
                 onClick={() => {
                   navigate("/watch-list");
                 }}
+                className="text-white"
               >
                 My Watch List
               </Nav.Link>
@@ -90,14 +99,17 @@ function HeaderBar() {
               <FormControl
                 type="search"
                 placeholder="Search"
-                className="me-2"
+                className="me-2 text-white"
                 aria-label="Search"
                 onChange={(e) => {
                   searchData(e);
                 }}
               />
             </Form>
-            <Nav.Link href="/subscribe" className="text-uppercase">
+            <Nav.Link
+              onClick={() => navigate("/subscribe")}
+              className="btn btn-primary btn-sm text-white text-uppercase"
+            >
               Subscribe
             </Nav.Link>
             <Nav.Item>
@@ -118,12 +130,23 @@ function HeaderBar() {
               ) : (
                 <>
                   <Nav.Link
-                    to="/login"
+                    onClick={() => {
+                      navigate("/login");
+                    }}
                     className="text-white mr-2 description "
                     size="sm"
                   >
                     <LoginIcon />
                     &nbsp;Login
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={() => {
+                      navigate("/sign-up");
+                    }}
+                    className="text-white mr-2 description "
+                    size="sm"
+                  >
+                    Sign Up
                   </Nav.Link>
                 </>
               )}

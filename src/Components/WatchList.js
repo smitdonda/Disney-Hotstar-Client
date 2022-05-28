@@ -19,9 +19,9 @@ function WatchList() {
 
   let removingWatchListData = async (index) => {
     let data = await axios.delete(
-      "https://disneyhotstar0.herokuapp.com/users/delete-add-watch-list/" + index
+      "https://disneyhotstar0.herokuapp.com/users/delete-add-watch-list/" +
+        index
     );
-    console.log(data.data);
     if (data.data.statusCode === 200) {
       getData();
     }
@@ -32,7 +32,7 @@ function WatchList() {
       <HeaderBar></HeaderBar>
       <div
         className="container-fluid text-white p-5"
-        style={{ marginTop: "60px" }}
+        style={{ marginTop: "50px" }}
       >
         <div>
           <h2>Watch List</h2>

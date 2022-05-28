@@ -30,10 +30,9 @@ function VideoPlayer() {
         className="container-fluid text-white p-5"
         style={{ marginTop: "60px" }}
       >
-        {/* <ReactPlayer url="https://youtu.be/aWzlQ2N6qqg" controls="true" /> */}
         {seletetedData?.map((e, i) => {
           return (
-            <div>
+            <div key={i}>
               <div className="player-wrapper">
                 <ReactPlayer
                   url={e.trailer}
@@ -52,7 +51,7 @@ function VideoPlayer() {
                 </div>
                 <div>
                   <p>{e.description}</p>
-                  <div className="">
+                  <div>
                     <p>
                       {e.duration || e.seasons}&nbsp;&#8226;&nbsp;
                       {e.episodes ? e.episodes : null}&nbsp;&#8226;&nbsp;

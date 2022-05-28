@@ -1,8 +1,9 @@
 import "./App.css";
-import React, { useState, use } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
-// import HeaderBar from "./Components/HeaderBar";
+import Movies from "./Components/Movies";
+import TvShows from "./Components/TvShows";
 import MoviesTvShows from "./Components/MoviesTvShows";
 import VideoDetails from "./Components/VideoDetails";
 import VideoPlayer from "./Components/VideoPlayer";
@@ -33,6 +34,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies-tvshows/:id" element={<MoviesTvShows />} />
+            <Route path="/all-movies/:id" element={<Movies />} />
+            <Route path="/all-tvshows/:id" element={<TvShows />} />
             <Route path="/video-details/:id" element={<VideoDetails />} />
             <Route path="/watch-trailers/:id" element={<VideoPlayer />} />
             <Route path="/subscribe" element={<Subscribe />} />

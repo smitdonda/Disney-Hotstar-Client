@@ -35,8 +35,6 @@ function Home() {
     chackAuth();
   }, []);
 
-
-
   let [latestAndTrending, setLatestAndTrending] = useState();
   var [latestAndTrendingkey, setLatestAndTrendingkey] = useState();
   let latestData = async () => {
@@ -75,7 +73,9 @@ function Home() {
   let [allMovies, setAllMovies] = useState();
   let [allMovieskey, setAllMoviesKey] = useState();
   let moviesData = async () => {
-    let movies = await axios.get("https://disneyhotstar0.herokuapp.com/users/get-all-movies");
+    let movies = await axios.get(
+      "https://disneyhotstar0.herokuapp.com/users/get-all-movies"
+    );
     setAllMovies(movies.data.result);
     setAllMoviesKey(movies?.data?.result[0]?.key);
   };
@@ -90,7 +90,10 @@ function Home() {
     setTvShowsKey(tvShows?.data?.result[0]?.key);
   };
   let addWatchListData = async (id) => {
-    await axios.post("https://disneyhotstar0.herokuapp.com/users/post-add-watch-list", id);
+    await axios.post(
+      "https://disneyhotstar0.herokuapp.com/users/post-add-watch-list",
+      id
+    );
   };
 
   useEffect(() => {
@@ -106,7 +109,7 @@ function Home() {
       <HeaderBar></HeaderBar>
       <div
         className="container-fluid text-white p-5"
-        style={{ marginTop: "60px" }}
+        style={{ marginTop: "50px" }}
       >
         <div className="mt-2">
           <Carousel>
@@ -119,7 +122,7 @@ function Home() {
                 alt="Sories of the Next Page"
               />
             </Carousel.Item>
-            <Carousel.Item interval={500}>
+            <Carousel.Item interval={1000}>
               <img
                 className="d-block carousels-img"
                 width="100%"
@@ -128,7 +131,7 @@ function Home() {
                 alt="Civil Servant"
               />
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item interval={2000}>
               <img
                 className="d-block carousels-img"
                 width="100%"
@@ -137,7 +140,7 @@ function Home() {
                 alt="Home Shanti"
               />
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item interval={1000}>
               <img
                 className="d-block carousels-img"
                 width="100%"
@@ -210,7 +213,7 @@ function Home() {
               <Carousels cols={4} rows={1} gap={10} loop>
                 {showsRecommendedForYou?.map((s, i) => {
                   return (
-                    <Carousels.Item className="carousels-items">
+                    <Carousels.Item className="carousels-items" key={i}>
                       <div className="text-center hover-effect">
                         <Link to={`/video-details/` + s.keyName}>
                           <img
@@ -257,7 +260,7 @@ function Home() {
               <Carousels cols={4} rows={1} gap={15} loop>
                 {hotstarSpecials?.map((s, i) => {
                   return (
-                    <Carousels.Item className="carousels-items">
+                    <Carousels.Item className="carousels-items" key={i}>
                       <div className="text-center hover-effect">
                         <Link to={`/video-details/` + s.keyName}>
                           <img
@@ -304,7 +307,7 @@ function Home() {
               <Carousels cols={4} rows={1} gap={10} loop>
                 {allMovies?.map((m, i) => {
                   return (
-                    <Carousels.Item className="carousels-items">
+                    <Carousels.Item className="carousels-items" key={i}>
                       <div className="text-center hover-effect">
                         <Link to={`/video-details/` + m.keyName}>
                           <img
@@ -351,7 +354,7 @@ function Home() {
               <Carousels cols={4} rows={1} gap={10} loop>
                 {allTvShows?.map((t, i) => {
                   return (
-                    <Carousels.Item className="carousels-items">
+                    <Carousels.Item className="carousels-items" key={i}>
                       <div className="text-center hover-effect">
                         <Link to={`/video-details/` + t.keyName}>
                           <img

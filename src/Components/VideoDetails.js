@@ -33,7 +33,7 @@ function VideoPlayerDetails() {
       >
         {seletetedData?.map((e, i) => {
           return (
-            <div>
+            <div key={i}>
               <div
                 className="trailer-details p-4"
                 style={{ borderRadius: "10px" }}
