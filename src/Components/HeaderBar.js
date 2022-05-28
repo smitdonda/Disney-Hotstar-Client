@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Container, Navbar, Nav, Form, FormControl} from "react-bootstrap";
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
 import { HotstarContext } from "../App";
 import LoginIcon from "@mui/icons-material/Login";
@@ -71,9 +71,9 @@ function HeaderBar() {
                 <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link to={"/movies-tvshows/" + allMovieskey}>
+                <Link href={"/movies-tvshows/" + allMovieskey}>
                   Movies
-                </Nav.Link>
+                </Link>
               </Nav.Item>
               <Nav.Link href={"/movies-tvshows/" + allTvShowsKey}>Tv</Nav.Link>
               <Nav.Link
