@@ -78,13 +78,13 @@ function HeaderBar() {
                 Home
               </Nav.Link>
               <Nav.Link
-                onClick={() => navigate("/all-movies/" + allMovieskey)}
+                onClick={() => navigate("/all-movies/movies")}
                 className="text-white"
               >
                 Movies
               </Nav.Link>
               <Nav.Link
-                onClick={() => navigate("/all-tvshows/" + allTvShowsKey)}
+                onClick={() => navigate("/all-tvshows/tvshowes")}
                 className="text-white"
               >
                 Tv
