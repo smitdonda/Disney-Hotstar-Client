@@ -12,13 +12,17 @@ function VideoPlayerDetails() {
   // seleteted-moviesandtvshow-details
   let getData = async () => {
     let data = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/seleteted-moviesandtvshow-details/" + id
+      "https://disney-hotstar-server.vercel.app/users/seleteted-moviesandtvshow-details/" +
+        id
     );
     setSeletetData(data.data.result);
   };
 
   let addWatchListData = async (e) => {
-    await axios.post("https://disneyhotstar0.herokuapp.com/users/post-add-watch-list", e);
+    await axios.post(
+      "https://disney-hotstar-server.vercel.app/users/post-add-watch-list",
+      e
+    );
   };
 
   useEffect(() => {

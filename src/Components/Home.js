@@ -19,7 +19,7 @@ function Home() {
       };
       // auth post method
       let res = await axios.post(
-        "https://disneyhotstar0.herokuapp.com/users/auth",
+        "https://disney-hotstar-server.vercel.app/users/auth",
         { purpose: "validate access" },
         config
       );
@@ -39,7 +39,7 @@ function Home() {
   var [latestAndTrendingkey, setLatestAndTrendingkey] = useState();
   let latestData = async () => {
     let latest = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-latest-and-Trending"
+      "https://disney-hotstar-server.vercel.app/users/get-latest-and-Trending"
     );
     setLatestAndTrending(latest.data.result);
     for (let i = 0; i < latest.data.result.length; i++) {
@@ -53,7 +53,7 @@ function Home() {
   let [showsRecommended, setShowsRecommended] = useState();
   let recommendedData = async () => {
     let movies = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-shows-recommended-for-you"
+      "https://disney-hotstar-server.vercel.app/users/get-shows-recommended-for-you"
     );
     setshowsRecommendedForYou(movies.data.result);
     setShowsRecommended(movies?.data?.result[0]?.categoryKey);
@@ -63,7 +63,7 @@ function Home() {
   let [hotstarSpecialskey, setHotstarSpecialsKey] = useState();
   let hotstarSpecialsData = async () => {
     let movies = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-hotstar-specials"
+      "https://disney-hotstar-server.vercel.app/users/get-hotstar-specials"
     );
     setHotstarSpecials(movies.data.result);
     setHotstarSpecialsKey(movies?.data?.result[0]?.categoryKey);
@@ -74,7 +74,7 @@ function Home() {
   let [allMovieskey, setAllMoviesKey] = useState();
   let moviesData = async () => {
     let movies = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-all-movies"
+      "https://disney-hotstar-server.vercel.app/users/get-all-movies"
     );
     setAllMovies(movies.data.result);
     setAllMoviesKey(movies?.data?.result[0]?.key);
@@ -84,14 +84,14 @@ function Home() {
   let [allTvShowsKey, setTvShowsKey] = useState();
   let tvShowsData = async () => {
     let tvShows = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-all-tv-shows"
+      "https://disney-hotstar-server.vercel.app/users/get-all-tv-shows"
     );
     setTvShows(tvShows.data.result);
     setTvShowsKey(tvShows?.data?.result[0]?.key);
   };
   let addWatchListData = async (id) => {
     await axios.post(
-      "https://disneyhotstar0.herokuapp.com/users/post-add-watch-list",
+      "https://disney-hotstar-server.vercel.app/users/post-add-watch-list",
       id
     );
   };

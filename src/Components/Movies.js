@@ -10,7 +10,7 @@ function Movies() {
   let [movies, setMovies] = useState();
   let moviesData = async () => {
     let movies = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-all-movies"
+      "https://disney-hotstar-server.vercel.app/users/get-all-movies"
     );
     setMovies(movies?.data?.result);
     setAllMoviesName(movies?.data?.result[0]?.moviesOrTv);
@@ -21,7 +21,7 @@ function Movies() {
   }, []);
   let addWatchListData = async (e) => {
     await axios.post(
-      "https://disneyhotstar0.herokuapp.com/users/post-add-watch-list",
+      "https://disney-hotstar-server.vercel.app/users/post-add-watch-list",
       e
     );
   };

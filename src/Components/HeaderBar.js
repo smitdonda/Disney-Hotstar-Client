@@ -14,7 +14,7 @@ function HeaderBar() {
   let [allMovieskey, setAllMoviesKey] = useState();
   let moviesData = async () => {
     let movies = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-all-movies"
+      "https://disney-hotstar-server.vercel.app/users/get-all-movies"
     );
     if (movies?.data?.result) {
       setAllMoviesKey(movies?.data?.result[0]?.key);
@@ -24,7 +24,7 @@ function HeaderBar() {
   let [allTvShowsKey, setTvShowsKey] = useState();
   let tvShowsData = async () => {
     let tvShows = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-all-tv-shows"
+      "https://disney-hotstar-server.vercel.app/users/get-all-tv-shows"
     );
     if (tvShows.data.result) {
       setTvShowsKey(tvShows?.data?.result[0]?.key);
@@ -43,9 +43,9 @@ function HeaderBar() {
 
   let searchData = async (e) => {
     context.setSearchName(e.target.value);
-    navigate("/search");
+
     let search = await axios.post(
-      "https://disneyhotstar0.herokuapp.com/users/post-search-name/",
+      "https://disney-hotstar-server.vercel.app/users/post-search-name/",
       { name: context.searchName }
     );
     if (search.data.statusCode === 200) {
@@ -68,7 +68,10 @@ function HeaderBar() {
               alt="Disnep +hotstar"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" style={{fontSize: "18px"}} />
+          <Navbar.Toggle
+            aria-controls="navbarScroll"
+            style={{ fontSize: "18px" }}
+          />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0 " navbarScroll>
               <Nav.Link onClick={() => navigate("/")} className="text-white">
@@ -99,11 +102,12 @@ function HeaderBar() {
               <FormControl
                 type="search"
                 placeholder="Search"
-                className="me-2 text-white"
+                className="me-2"
                 aria-label="Search"
                 onChange={(e) => {
                   searchData(e);
                 }}
+                onClick={() => navigate("/search")}
               />
             </Form>
             <Nav.Link

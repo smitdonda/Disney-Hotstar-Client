@@ -10,15 +10,20 @@ function Search() {
   let context = useContext(HotstarContext);
 
   let getData = async () => {
-    let data = await axios.get("https://disneyhotstar0.herokuapp.com/users/getmoviesortv/");
+    let data = await axios.get(
+      "https://disney-hotstar-server.vercel.app/users/getmoviesortv/"
+    );
     context.setallMoviesOrTvShows(data.data.result);
   };
   useEffect(() => {
     getData();
   }, []);
-  
+
   let addWatchListData = async (e) => {
-    await axios.post("https://disneyhotstar0.herokuapp.com/users/post-add-watch-list", e);
+    await axios.post(
+      "https://disney-hotstar-server.vercel.app/users/post-add-watch-list",
+      e
+    );
   };
 
   return (

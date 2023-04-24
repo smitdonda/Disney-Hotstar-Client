@@ -16,7 +16,8 @@ function MoviesTvShows() {
   let [categoryName, setCategoryName] = useState();
   let latestData = async () => {
     let data = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-find-the-category/" + id
+      "https://disney-hotstar-server.vercel.app/users/get-find-the-category/" +
+        id
     );
     setFindTheCategory(data.data.result);
     if (id === "latestandtrending") {
@@ -34,7 +35,7 @@ function MoviesTvShows() {
 
   let addWatchListData = async (e) => {
     await axios.post(
-      "https://disneyhotstar0.herokuapp.com/users/post-add-watch-list",
+      "https://disney-hotstar-server.vercel.app/users/post-add-watch-list",
       e
     );
   };

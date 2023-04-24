@@ -12,7 +12,10 @@ function Signup() {
   let navigate = useNavigate();
 
   let handleSubmit = async (values) => {
-    let res = await axios.post("https://disneyhotstar0.herokuapp.com/users/sign-up", values);
+    let res = await axios.post(
+      "https://disney-hotstar-server.vercel.app/users/sign-up",
+      values
+    );
     if (res.data.statusCode === 200) {
       navigate("/login");
     }

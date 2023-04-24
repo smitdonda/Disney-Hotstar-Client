@@ -12,7 +12,10 @@ function Login() {
   let navigate = useNavigate();
 
   let handleSubmit = async (values) => {
-    let res = await axios.post("https://disneyhotstar0.herokuapp.com/users/login", values);
+    let res = await axios.post(
+      "https://disney-hotstar-server.vercel.app/users/login",
+      values
+    );
     if (res.data.statusCode === 200) {
       sessionStorage.setItem("token", res.data.token);
       sessionStorage.setItem("email", res.data.email);

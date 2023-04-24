@@ -9,7 +9,7 @@ function WatchList() {
   let [watchList, setWatchList] = useState();
   let getData = async () => {
     let data = await axios.get(
-      "https://disneyhotstar0.herokuapp.com/users/get-add-watch-list"
+      "https://disney-hotstar-server.vercel.app/users/get-add-watch-list"
     );
     setWatchList(data.data.result);
   };
@@ -19,7 +19,7 @@ function WatchList() {
 
   let removingWatchListData = async (index) => {
     let data = await axios.delete(
-      "https://disneyhotstar0.herokuapp.com/users/delete-add-watch-list/" +
+      "https://disney-hotstar-server.vercel.app/users/delete-add-watch-list/" +
         index
     );
     if (data.data.statusCode === 200) {
